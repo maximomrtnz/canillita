@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Canillita</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+
+    <!--Action Bar-->
+    <string name="action_search">Search</string>
+    <string name="action_new">New</string>
+    
+    <!--Dialogs Titles-->
+    <string name="title_new_rss">New RSS</string>
+
+</resources>
