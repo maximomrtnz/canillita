@@ -14,4 +14,10 @@
     <!--Dialogs Titles-->
     <string name="title_new_rss">New RSS</string>
 
+    <!--Dialogs Messages-->
+    <string name="message_new_rss">Enter a RSS feeds URL.</string>
+
+    <!--Toast Messages-->
+    <string name="message_invalid_url">Invalid RSS Feeds URL</string>
+
 </resources>

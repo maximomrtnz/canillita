@@ -1,16 +1,17 @@
 package canillita.maximomrtnz.com.canillita;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.DialogFragment;
 import android.os.Bundle;
-import android.text.InputType;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
+import android.widget.Toast;
+
+import canillita.maximomrtnz.com.canillita.dialogs.InputDialog;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements InputDialog.InputDialogListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,36 +54,36 @@ public class MainActivity extends Activity {
      */
 
     private void openNew(){
-
-        // Create the Dialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        // Add the title
-        builder.setTitle(R.string.title_new_rss);
-
-        // Set up the input
-        EditText input = new EditText(this);
-
-        // Specify the type of input expected
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        builder.setView(input);
-
-        // Add the buttons
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // User clicked OK button
-            }
-        });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // User cancelled the dialog
-            }
-        });
-        // Set other dialog properties
-
-
-        // Create the AlertDialog
-        builder.show();
+        DialogFragment newFragment = InputDialog.newInstance(R.string.title_new_rss, R.string.message_new_rss);
+        newFragment.show(getFragmentManager(), "inputDialog");
     }
 
+
+    /**
+     * Method from the InputDialogListener interface
+     */
+
+    @Override
+    public void onDialogPositiveClick(String input) {
+
+        // Check if the input passed is a valid URL
+        boolean isValidURL = Patterns.WEB_URL.matcher(input).matches();
+
+        if(isValidURL){
+
+
+
+        }else{
+
+            // Show a message saying that is a invalid URL
+            Toast.makeText(getApplicationContext(), R.string.message_invalid_url, Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
+
+    @Override
+    public void onDialogNegativeClick() {
+
+    }
 }
